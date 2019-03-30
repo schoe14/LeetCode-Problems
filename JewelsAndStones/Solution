@@ -1,4 +1,4 @@
-class JewelsAndStones {
+class Solution {
     public int numJewelsInStones(String J, String S) {
         /* my code:
         int count = 0;
