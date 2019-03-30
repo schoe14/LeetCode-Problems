@@ -1,0 +1,17 @@
+public class UniqueEmailAddresses {
+    public static int numUniqueEmails(String[] emails) {
+        HashSet<String> stringSet = new HashSet<String>();
+
+            for (String str : emails) {
+                String string = str.substring(str.indexOf('@'));
+                str = str.substring(0, str.indexOf('@'));
+                if(str.contains("+")) {
+                    str = str.substring(0, str.indexOf("+"));
+                }
+                str = str.replaceAll("\\.", "");
+                str += string;
+                stringSet.add(str);
+            }
+
+        return stringSet.size();
+    }
