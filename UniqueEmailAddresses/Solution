@@ -1,4 +1,4 @@
-public class UniqueEmailAddresses {
+public class Solution {
     public static int numUniqueEmails(String[] emails) {
         HashSet<String> stringSet = new HashSet<String>();
 
@@ -15,3 +15,4 @@ public class UniqueEmailAddresses {
 
         return stringSet.size();
     }
+}
