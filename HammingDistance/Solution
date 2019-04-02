@@ -1,0 +1,24 @@
+// The Hamming distance between two integers is the number of positions at which the corresponding bits are different.
+// Given two integers x and y, calculate the Hamming distance.
+
+class Solution {
+    public int hammingDistance(int x, int y) {
+        int[] binaryX = new int[1000];
+        int[] binaryY = new int[1000];
+
+        int i = 0, count = 0;
+        while(Math.max(x, y) > 0) {
+            binaryX[i] = x % 2;
+            binaryY[i] = y % 2;
+            x = x / 2;
+            y = y / 2;
+            i++;
+        }
+
+        for(int j = 0; j < binaryX.length; j++) {
+            if(binaryX[j] != binaryY[j]) count++;
+        }
+
+        return count;
+    }
+}
