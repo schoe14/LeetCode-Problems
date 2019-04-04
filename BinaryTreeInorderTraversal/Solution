@@ -21,16 +21,16 @@ public class Solution {
     }
 
     public List<Integer> inorderTraversal(TreeNode root) {
-        List<Integer> pre = new ArrayList<>();
-        inorderHelper(root, pre);
-        return pre;
+        List<Integer> in = new ArrayList<>();
+        inorderHelper(root, in);
+        return in;
     }
 
-    public void inorderHelper(TreeNode root, List<Integer> pre) {
+    public void inorderHelper(TreeNode root, List<Integer> in) {
         if(root == null) return;
-        inorderHelper(root.left, pre);
-        pre.add(root.val);
-        inorderHelper(root.right, pre);
+        inorderHelper(root.left, in);
+        in.add(root.val);
+        inorderHelper(root.right, in);
     }
-
+    
 }
