@@ -1,0 +1,128 @@
+package com.SeohuiChoe;
+
+class MyLinkedList {
+
+    Node head;
+
+    public class Node {
+        int val;
+        Node next;
+
+        Node(int val) {
+            this.val = val;
+        }
+    }
+
+    /** Initialize your data structure here. */
+    public MyLinkedList() {
+        head = null;
+    }
+
+    /** Get the value of the index-th node in the linked list. If the index is invalid, return -1. */
+    public int get(int index) {
+        Node moving = head;
+
+        if(head == null) {
+            return -1;
+        }
+
+        for(int i = 0; i < index; i++) {
+            if(moving.next == null) {
+                return -1;
+            }
+            else {
+                moving = moving.next;
+            }
+        }
+        return moving.val;
+    }
+
+    /** Add a node of value val before the first element of the linked list. After the insertion, the new node will be the first node of the linked list. */
+    public void addAtHead(int val) {
+        Node cur = new Node(val);
+        cur.next = head;
+        head = cur;
+    }
+
+    /** Append a node of value val to the last element of the linked list. */
+    public void addAtTail(int val) {
+        Node cur = new Node(val);
+        Node moving = head;
+        if(head == null) {
+            head = cur;
+            return;
+        }
+        while(moving.next != null) {
+            moving = moving.next;
+        }
+        moving.next = cur;
+    }
+
+    /** Add a node of value val before the index-th node in the linked list. If index equals to the length of linked list, the node will be appended to the end of linked list. If index is greater than the length, the node will not be inserted. */
+    public void addAtIndex(int index, int val) {
+        Node cur = new Node(val);
+        Node moving = head;
+
+        if(index == 0) {
+            cur.next = head;
+            head = cur;
+            return;
+        }
+
+        for(int i = 0; i < index - 1; i++) {
+            if(moving.next == null) {
+                return;
+            }
+            else {
+                moving = moving.next;
+            }
+        }
+
+        if(moving != null) {
+            cur.next = moving.next;
+            moving.next = cur;
+        }
+    }
+
+    /** Delete the index-th node in the linked list, if the index is valid. */
+    public void deleteAtIndex(int index) {
+        Node moving = head;
+
+        if(index == 0) {
+            head = head.next;
+            return;
+        }
+
+        for(int i = 0; i < index - 1; i++) {
+            if(moving.next == null) {
+                return;
+            }
+            else {
+                moving = moving.next;
+            }
+        }
+
+        if(moving.next != null) {
+            moving.next = moving.next.next;
+        }
+
+    }
+
+    // for test
+    public void print() {
+        Node current = head;
+
+        if(current != null) {
+            while (current.next != null) {
+                System.out.println(current.val);
+                current = current.next;
+            }
+            System.out.println(current.val);
+        }
+
+        else {
+            System.out.println("Empty");
+        }
+    }
+    
+}
