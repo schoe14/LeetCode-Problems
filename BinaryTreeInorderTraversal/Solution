@@ -1,0 +1,36 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Solution {
+
+    /**
+     * Definition for a binary tree node.
+     * public class TreeNode {
+     *     int val;
+     *     TreeNode left;
+     *     TreeNode right;
+     *     TreeNode(int x) { val = x; }
+     * }
+     */
+     
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+        TreeNode(int x) { val = x; }
+    }
+
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> pre = new ArrayList<>();
+        inorderHelper(root, pre);
+        return pre;
+    }
+
+    public void inorderHelper(TreeNode root, List<Integer> pre) {
+        if(root == null) return;
+        inorderHelper(root.left, pre);
+        pre.add(root.val);
+        inorderHelper(root.right, pre);
+    }
+
+}
