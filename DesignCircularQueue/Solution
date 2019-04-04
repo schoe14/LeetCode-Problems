@@ -1,0 +1,59 @@
+/*  One of the benefits of the circular queue is that we can make use of the spaces in front of the queue. 
+    In a normal queue, once the queue becomes full, we cannot insert the next element even if there is a space in front of the queue. 
+    But using the circular queue, we can use the space to store new values.
+*/
+
+public class Solution {
+    int[] data;
+    int p_start, p_end;
+    int length;
+
+    /** Initialize your data structure here. Set the size of the queue to be k. */
+    public MyCircularQueue(int k) {
+        data = new int[k];
+        p_start = 0; p_end = -1;
+        length = 0;
+    }
+
+    /** Insert an element into the circular queue. Return true if the operation is successful. */
+    public boolean enQueue(int value) {
+        if(!isFull()) {
+            p_end = (p_end + 1) % data.length;
+            data[p_end] = value;
+            length++;
+            return true;
+        }
+        return false;
+    }
+
+    /** Delete an element from the circular queue. Return true if the operation is successful. */
+    public boolean deQueue() {
+        if(!isEmpty()) {
+            p_start = (p_start + 1) % data.length;
+            length--;
+            return true;
+        }
+        return false;
+    }
+
+    /** Get the front item from the queue. */
+    public int Front() {
+        return isEmpty() ? -1 : data[p_start];
+    }
+
+    /** Get the last item from the queue. */
+    public int Rear() {
+        return isEmpty() ? -1 : data[p_end];
+    }
+
+    /** Checks whether the circular queue is empty or not. */
+    public boolean isEmpty() {
+        return length == 0;
+    }
+
+    /** Checks whether the circular queue is full or not. */
+    public boolean isFull() {
+        return length == data.length;
+    }
+
+}
