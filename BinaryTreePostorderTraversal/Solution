@@ -13,12 +13,6 @@ import java.util.List;
  
 class Solution {
 
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) { val = x; }
-    }
     public List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> post = new ArrayList<>();
         postHelper(root, post);
