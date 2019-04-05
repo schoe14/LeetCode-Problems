@@ -1,0 +1,29 @@
+import java.util.ArrayList;
+import java.util.List;
+
+/*
+ * A self-dividing number is a number that is divisible by every digit it contains.
+ * Also, a self-dividing number is not allowed to contain the digit zero.
+ * Given a lower and upper number bound, 
+ * output a list of every possible self dividing number, including the bounds if possible.
+ */
+
+class Solution {
+
+    public List<Integer> selfDividingNumbers(int left, int right) {
+        List<Integer> list = new ArrayList<>();
+        int remainder = 0;
+
+        for(int i = left; i <= right; i++) {
+            int temp = i;
+            while(temp > 0) {
+                remainder = temp % 10;
+                if(remainder == 0 || i % remainder != 0) break;
+                if(temp < 10 && i % remainder == 0) list.add(i);
+                temp = (temp - remainder) / 10;
+            }
+        }
+        return list;
+    }
+    
+}
