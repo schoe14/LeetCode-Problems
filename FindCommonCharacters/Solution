@@ -1,0 +1,30 @@
+import java.util.ArrayList;
+import java.util.List;
+
+/*
+  Given an array A of strings made only from lowercase letters, 
+  return a list of all characters that show up in all strings within the list (including duplicates). 
+ */
+
+class Solution {
+
+    public List<String> commonChars(String[] A) {
+        
+        List<String> result = new ArrayList<>();
+
+        for (char ch : A[0].toCharArray()) {
+            ArrayList<Character> list = new ArrayList<>();
+            for (int i = 1; i < A.length; i++) {
+                if (A[i].contains("" + ch)) {
+                    list.add(ch);
+                    A[i] = A[i].replaceFirst("" + ch, "");
+                }
+            }
+            if(list.size() == A.length - 1) result.add(""+list.get(0));
+        }
+        
+        return result;
+        
+    }
+    
+}
