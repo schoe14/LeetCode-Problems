@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 //  Given an n-ary tree, return the postorder traversal of its nodes' values.
 
 /*
@@ -14,6 +17,7 @@ class Node {
     }
 };
 */
+
 class Solution {
 
     public List<Integer> list = new ArrayList<>();
