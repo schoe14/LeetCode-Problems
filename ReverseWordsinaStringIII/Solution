@@ -1,0 +1,17 @@
+/*
+  Given a string, you need to reverse the order of characters in each word within a sentence 
+  while still preserving whitespace and initial word order.
+ */
+ 
+ class Solution 
+ 
+    public String reverseWords(String s) {
+       String[] strArr = s.split(" ");
+        StringBuilder result = new StringBuilder();
+        for (String string : strArr) {
+            result.append(new StringBuffer(string).reverse().toString() + " ");
+        }
+        return result.toString().trim();
+    }
+    
+}
