@@ -1,0 +1,21 @@
+/*
+  Given a positive integer, output its complement number. 
+  The complement strategy is to flip the bits of its binary representation.
+ */
+
+class Solution {
+
+    public int findComplement(int num) {
+        StringBuilder s = new StringBuilder();
+        while(num > 0) {
+            s.append(num % 2);
+            num = num / 2;
+        }
+        num = 0;
+        for(int i = 0; i < s.length(); i++) {
+            if(s.charAt(i) == '0') num += Math.pow(2, i);
+        }
+        return num;
+    }
+    
+}
