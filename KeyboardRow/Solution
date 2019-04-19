@@ -1,0 +1,31 @@
+import java.util.ArrayList;
+
+/*
+Given a List of words, return the words that can be typed using letters of alphabet on only one row's of American keyboard
+ */
+
+public class Solution {
+
+    public String[] findWords(String[] words) {
+        String firstRow = "qwertyuiop";
+        String secondRow = "asdfghjkl";
+        ArrayList<String> result = new ArrayList<>();
+        for(String word : words) {
+            int countFirst = 0; int countSecond = 0; int countThird = 0;
+            for(char ch : word.toLowerCase().toCharArray()) {
+                if(firstRow.contains(""+ch)) {
+                    countFirst++;
+                }
+                else if(secondRow.contains(""+ch)) {
+                    countSecond++;
+                }
+                else countThird++;
+            }
+            if(countFirst == word.length() || countSecond == word.length() ||
+                    countThird == word.length()) result.add(word);
+        }
+        String[] array = result.toArray(new String[result.size()]);
+        return array;
+    }
+    
+}
